@@ -5,6 +5,7 @@ import firebase from 'firebase'
   var firebaseConfig = {
     apiKey: "AIzaSyCdoiR98PiYs4D-85cNktoGkqyyxEABEBc",
     authDomain: "medicare-box.firebaseapp.com",
+    databaseURL: "https://medicare-box-default-rtdb.asia-southeast1.firebasedatabase.app",
     projectId: "medicare-box",
     storageBucket: "medicare-box.appspot.com",
     messagingSenderId: "866158574923",
