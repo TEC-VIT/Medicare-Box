@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import './App.css';
+
 import firebase from './firebase.js';
 import Home from './MainPage/home.js';
 import Name from './NewMedicine/Page1/name';
+import Login from "./MainPage/login"
+import Signup from "./MainPage/signup"
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 const App= () =>{
@@ -11,10 +14,13 @@ const App= () =>{
       <Switch>
         <Route exact path='/' component={Home} />
         <Route exact path='/newname' component={Name} />
+        <Route exact path='/Signup' component={Signup} /> 
+        <Route exact path='/Login' component={Login} /> 
       </Switch>
     </Router>
   )
 }
+
 export default App;
 
 // class App extends Component {
