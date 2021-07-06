@@ -15,6 +15,12 @@
     align-items: center;
     justify-content: center;
     font-size: 40px;
+    transition-duration: 0.2s;
+}
+
+.add-med:hover{
+    background-color: rgb(22, 65, 82);
+    cursor: pointer;
 }
 
 .add-icon{

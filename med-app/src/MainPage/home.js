@@ -1,13 +1,16 @@
 import './home.css'
-import {BiPlusMedical} from "react-icons/bi";
+import {GoPlus} from "react-icons/go";
+import { Link } from 'react-router-dom';
 
 const Home=() =>{
     return(
         <div className="home">
             Home Page
-            <div className="add-med">
-                <BiPlusMedical className="add-icon" />
-            </div>
+            <Link to='/newname'>
+                <div className="add-med" onClick=''>
+                    <GoPlus className="add-icon" />
+                </div>
+            </Link>
         </div>
     )
 }

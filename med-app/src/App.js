@@ -2,6 +2,20 @@ import React, { Component } from 'react';
 import './App.css';
 import firebase from './firebase.js';
 import Home from './MainPage/home.js';
+import Name from './NewMedicine/Page1/name';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+
+const App= () =>{
+  return(
+    <Router>
+      <Switch>
+        <Route exact path='/' component={Home} />
+        <Route exact path='/newname' component={Name} />
+      </Switch>
+    </Router>
+  )
+}
+export default App;
 
 // class App extends Component {
 
@@ -68,9 +82,3 @@ import Home from './MainPage/home.js';
 //   }
 // }
 
-const App= () =>{
-  return(
-    <Home/>
-  )
-}
-export default App;
