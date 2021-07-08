@@ -1,55 +1,64 @@
-import React, { useState } from "react"
+import React, { useState, useRef } from "react"
+import { useAuth } from "../Authentication/authContext";
+import { Link, useHistory } from "react-router-dom"
 
 function Login() {
-  const [values, setValues] = useState({
-    username: "",
-    password: ""
-
-  });
-
-  const handleUsernameChange = (event) => {
-    setValues({ ...values, username: event.target.value })
-  }
-
-  const handlePasswordChange = (event) => {
-    setValues({ ...values, password: event.target.value })
-  }
-
+  const emailRef = useRef()
+  const passwordRef = useRef()
+  const { login } = useAuth()
+  const [error, setError] = useState('')
+  const [loading, setLoading] = useState(false)
   const [submitted, setSubmitted] = useState(false);
+  const history = useHistory()
 
-  const handleSubmit = (event) => {
+  async function handleSubmit(event) {
     event.preventDefault();
-    setSubmitted(true);
+
+    try{
+      setError('')
+      setLoading(true)
+      await login(emailRef.current.value, passwordRef.current.value)
+      setSubmitted(true);
+      history.push("/")
+    } catch {
+      setSubmitted(false);
+      setError('Log in failed!!')
+    }
+
+    setLoading(false)
   }
 
   return (
     <div>
-      <h1>Login</h1>
+      <h1>Log in</h1>
+      {error && <div>{error}</div>}
       <form onSubmit={handleSubmit}>
         <br></br>
         {submitted ? <div>Success!</div> : null}
         <br></br>
         <input
-          value={values.username}
-          onChange={handleUsernameChange}
           type="email"
-          placeholder="username" />
+          placeholder="username"
+          ref={emailRef}
+          required />
         <br></br>
         <input
-          value={values.password}
-          onChange={handlePasswordChange}
+          ref={passwordRef}
           type="password"
-          placeholder="password" />
+          placeholder="password"
+          required />
         <br></br>
         <input
           type="submit"
-          placeholder="submit" />
+          placeholder="submit"
+          disabled={loading} />
       </form>
       <div>
-        Create an account? Sign up
+        Need an account? 
+        <Link to="/Signup">Sign up</Link>
       </div>
     </div>
   )
 }
 
-export default Login
+export default Login;

@@ -1,67 +1,75 @@
-import React, { useState } from "react"
+import React, { useState, useRef } from "react"
 import { useAuth } from "../Authentication/authContext";
+import { Link, useHistory } from "react-router-dom"
 
 function Signup() {
-  const [values, setValues] = useState({
-    username: "",
-    password: "",
-    confirmPassword: ""
-  });
-
-  //const { signup } = useAuth()
-
-  const handleUsernameChange = (event) => {
-    setValues({ ...values, username: event.target.value })
-  }
-
-  const handlePasswordChange = (event) => {
-    setValues({ ...values, password: event.target.value })
-  }
-
-  const handleConfirmPasswordChange = (event) => {
-    setValues({ ...values, confirmPassword: event.target.value })
-  }
-
+  const emailRef = useRef()
+  const passwordRef = useRef()
+  const passwordConfirmRef = useRef()
+  const { signup } = useAuth()
+  const [error, setError] = useState('')
+  const [loading, setLoading] = useState(false)
   const [submitted, setSubmitted] = useState(false);
+  const history = useHistory()
 
-  const handleSubmit = (event) => {
+  async function handleSubmit(event) {
     event.preventDefault();
-    setSubmitted(true);
 
+    if(passwordRef.current.value !== passwordConfirmRef.current.value){
+      return (
+        setError("passwords don't match"),
+        setSubmitted(false)
+      )
+    }
 
+    try{
+      setError('')
+      setLoading(true)
+      await signup(emailRef.current.value, passwordRef.current.value)
+      setSubmitted(true);
+      history.push("/")
+    } catch {
+      setSubmitted(false)
+      setError('Could not create an account!!')
+    }
+
+    setLoading(false)
   }
 
   return (
     <div>
       <h1>Sign up</h1>
+      {error && <div>{error}</div>}
       <form onSubmit={handleSubmit}>
         <br></br>
         {submitted ? <div>Success!</div> : null}
         <br></br>
         <input
-          value={values.username}
-          onChange={handleUsernameChange}
           type="email"
-          placeholder="username" />
+          placeholder="username"
+          ref={emailRef}
+          required />
         <br></br>
         <input
-          value={values.password}
-          onChange={handlePasswordChange}
+          ref={passwordRef}
           type="password"
-          placeholder="password" />
+          placeholder="password"
+          required />
         <br></br>
         <input
-          value={values.confirmPassword}
-          onChange={handleConfirmPasswordChange}
+          ref={passwordConfirmRef}
           type="password"
-          placeholder="Confirm password" />
+          placeholder="Confirm password"
+          required />
         <br></br>
         <input
           type="submit"
-          placeholder="submit" />
+          placeholder="submit"
+          disabled={loading} />
       </form>
       <div>
-        Already have an account? Log in
+        Already have an account? 
+        <Link to="/Login">Log in</Link>
       </div>
     </div>
   )

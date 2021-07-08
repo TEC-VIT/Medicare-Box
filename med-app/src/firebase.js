@@ -1,7 +1,7 @@
-import firebase from "firebase"
+import firebase from "firebase/app"
 import "firebase/auth"
 
-const app1  = firebase.initializeApp({
+const app  = firebase.initializeApp({
     apiKey: "AIzaSyCdoiR98PiYs4D-85cNktoGkqyyxEABEBc",
     authDomain: "medicare-box.firebaseapp.com",
     projectId: "medicare-box",
@@ -11,5 +11,5 @@ const app1  = firebase.initializeApp({
     measurementId: "G-9B9B131KG8"
 });
 
-export const auth = app1.auth()
-export default app1
+export const auth = app.auth()
+export default app
