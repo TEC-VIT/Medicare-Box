@@ -1,28 +1,68 @@
 .home{
     width: 100%;
     height: 100%;
+    font-family: 'Montserrat';
 }
 
 .add-med{
     display: flex;
     width: 5rem;
     height: 5rem;
-    background-color: rgb(110, 168, 190);
+    background-color: #28608F;
     position: absolute;
     right: 4%;
     bottom: 4%;
     border-radius: 50%;
     align-items: center;
     justify-content: center;
-    font-size: 40px;
+    font-size: 60px;
     transition-duration: 0.2s;
 }
 
 .add-med:hover{
     background-color: rgb(22, 65, 82);
-    cursor: pointer;
+    /* cursor: pointer; */
 }
 
 .add-icon{
-    color: rgb(53, 158, 53);
+    color: #6BD75B;
+}
+
+.account-link{
+    width: 50px;
+}
+
+.account{
+    width: 50px;
+    height: fit-content;
+    border-radius: 50%;
+    font-size: 50px;
+}
+
+.acc-icon{
+    /* position: absolute;
+    top: 2%;
+    left: 2%; */
+    font-size: 50px;
+    color: #28608F;
+    margin: 0.5rem;
+    border-radius: 50%;
+}
+
+.acc-icon:hover{
+    color: rgb(22, 65, 82);
+}
+
+.heading{
+    font-size: 30px;
+    width: fit-content;
+    margin: 0.5rem;
+    display: inline;
+}
+
+.top-row{
+    width: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
 }
