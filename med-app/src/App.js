@@ -4,6 +4,10 @@ import './App.css';
 import firebase from './firebase.js';
 import Home from './MainPage/home.js';
 import Name from './NewMedicine/Page1/name';
+import Daily from './NewMedicine/Page2/daily';
+import Freq from './NewMedicine/Page3/freq';
+import DaySec from './NewMedicine/Page4/DaySection';
+import Time from './NewMedicine/Page5/Time';
 import Login from "./MainPage/login"
 import Signup from "./MainPage/signup"
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
@@ -16,6 +20,10 @@ const App= () =>{
         <Switch>
           <Route exact path='/' component={Home} />
           <Route exact path='/newname' component={Name} />
+          <Route exact path='/daily' component={Daily} />
+          <Route exact path='/freq' component={Freq} />
+          <Route exact path='/daysec' component={DaySec} />
+          <Route exact path='/time' component={Time} />
           <Route exact path='/Signup' component={Signup} /> 
           <Route exact path='/Login' component={Login} /> 
         </Switch>
