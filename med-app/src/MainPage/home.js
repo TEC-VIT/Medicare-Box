@@ -3,37 +3,57 @@ import {GoPlus} from "react-icons/go";
 import { Link } from 'react-router-dom';
 import { MdAccountCircle } from "react-icons/md";
 
-const data=[]
+const data=[
+    {compartment:1, name:'Remdisivir', repeat:'Repeats daily, twice a day', pills:15, refill:'20th July, 2021'},
+    {compartment:2, name:'Remdisivir', repeat:'Repeats daily, twice a day', pills:10, refill:'15th July, 2021'},
+    {compartment:3, name:'Remdisivir', repeat:'Repeats daily, twice a day', pills:12, refill:'9th July, 2021'},
+    {compartment:4, name:null, repeat:null, pills:null, refill:null},
+    {compartment:5, name:'Remdisivir', repeat:'Repeats daily, twice a day', pills:18, refill:'12th July, 2021'},
+    {compartment:6, name:null, repeat:null, pills:null, refill:null},
+]
 
 const Home=() =>{
     return(
         <div className="home">
-            <Link to='/newname'>
+            {/* <Link to='/newname'>
                 <div className="add-med" onClick=''>
                     <GoPlus className="add-icon" />
                 </div>
-            </Link>
+            </Link> */}
             <div className='top-row'>
                 <MdAccountCircle className="acc-icon" />
                 <div className='heading'>
                     Hey Yash!
                 </div>
             </div>
-            <div className='card'>
-                <div className='comp-name'>Compartment 1</div>
-                <div className='content'>
-                    <div className='details'>
-                        <div className='med-name'>Medicine: <b>Remdesivir</b></div>
-                        <div className='repeat'><i>Repeats daily, twice a day</i></div>
-                        <div className='remain'>Pills left: <b>15</b></div>
-                        <div className='refill'>Refill before: <b>10th July, 2021</b></div>
+            {data.map((item)=>{
+                return(
+                    <div className='home-card'>
+                        <div className='comp-name'>Compartment {item.compartment}</div>
+                        <div className='content'>
+                            <div className='details'>
+                                <div>Medicine: <b>{item.name}</b></div>
+                                <div><i>{item.repeat}</i></div>
+                                <div>Pills left: <b>{item.pills}</b></div>
+                                <div>Refill before: <b>{item.refill}</b></div>
+                            </div>
+                            {item.name!=null?(
+                                <div className='options'>
+                                    <div className='edit'>Edit</div>
+                                    <div className='refill-button'>Refill</div>
+                                </div>
+                            ):(
+                                <Link to='/newname'>
+                                    <div className="add-med" onClick=''>
+                                        <GoPlus className="add-icon" />
+                                    </div>
+                                </Link>
+                            )}
+                            
+                        </div>
                     </div>
-                    <div className='options'>
-                        <div className='edit'>Edit</div>
-                        <div className='refill-button'>Refill</div>
-                    </div>
-                </div>
-            </div>
+                )
+            })}
         </div>
     )
 }
