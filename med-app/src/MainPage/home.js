@@ -43,13 +43,11 @@ const Home=() =>{
                     Hey Yash!
                 </div>
                 <div>
-                    <strong>Email: </strong> {currentUser.email}
-                    <br></br>
-                    <Link to="/UpdateProfile">Update Profile</Link>
-                    <br></br>
-                    <button onClick={handleLogout}>
-                        Log Out
-                    </button>
+                    {/* <strong>Email: </strong> {currentUser.email} */}
+                    {/* <Link to="/UpdateProfile">
+                        <div className='logout-but'>Update Profile</div>
+                    </Link> */}
+                    <div onClick={handleLogout} className='logout-but'>Log Out</div>
                 </div>
             </div>
             {data.map((item)=>{
