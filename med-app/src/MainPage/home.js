@@ -1,7 +1,9 @@
 import './home.css'
 import {GoPlus} from "react-icons/go";
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { MdAccountCircle } from "react-icons/md";
+import React, { useState } from 'react';
+import { useAuth } from "../Authentication/authContext";
 
 const data=[
     {compartment:1, name:'Remdisivir', repeat:'Repeats daily, twice a day', pills:15, refill:'20th July, 2021'},
@@ -13,6 +15,21 @@ const data=[
 ]
 
 const Home=() =>{
+    const [error, setError] = useState('');
+    const { currentUser, logout } = useAuth()
+    const history = useHistory()
+
+    async function handleLogout() {
+        setError('')
+
+        try{
+            await logout()
+            history.pushState('/Login')
+        } catch {
+            setError('Failed to logout')
+        }
+    }
+
     return(
         <div className="home">
             {/* <Link to='/newname'>
@@ -24,6 +41,15 @@ const Home=() =>{
                 <MdAccountCircle className="acc-icon" />
                 <div className='heading'>
                     Hey Yash!
+                </div>
+                <div>
+                    <strong>Email: </strong> {currentUser.email}
+                    <br></br>
+                    <Link to="/UpdateProfile">Update Profile</Link>
+                    <br></br>
+                    <button onClick={handleLogout}>
+                        Log Out
+                    </button>
                 </div>
             </div>
             {data.map((item)=>{

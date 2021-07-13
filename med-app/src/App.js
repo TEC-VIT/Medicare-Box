@@ -12,18 +12,19 @@ import Login from "./MainPage/login"
 import Signup from "./MainPage/signup"
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { AuthProvider } from './Authentication/authContext';
+import PrivateRoute from './PrivateRoute';
 
 const App= () =>{
   return(
     <Router>
       <AuthProvider>
         <Switch>
-          <Route exact path='/' component={Home} />
-          <Route exact path='/newname' component={Name} />
-          <Route exact path='/daily' component={Daily} />
-          <Route exact path='/freq' component={Freq} />
-          <Route exact path='/daysec' component={DaySec} />
-          <Route exact path='/time' component={Time} />
+          <PrivateRoute exact path='/' component={Home} />
+          <PrivateRoute exact path='/newname' component={Name} />
+          <PrivateRoute exact path='/daily' component={Daily} />
+          <PrivateRoute exact path='/freq' component={Freq} />
+          <PrivateRoute exact path='/daysec' component={DaySec} />
+          <PrivateRoute exact path='/time' component={Time} />
           <Route exact path='/Signup' component={Signup} /> 
           <Route exact path='/Login' component={Login} /> 
         </Switch>
