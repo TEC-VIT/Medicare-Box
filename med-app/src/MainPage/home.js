@@ -2,23 +2,24 @@ import './home.css'
 import {GoPlus} from "react-icons/go";
 import { Link, useHistory } from 'react-router-dom';
 import { MdAccountCircle } from "react-icons/md";
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useAuth } from "../Authentication/authContext";
-
-const data=[
-    {compartment:1, name:'Remdisivir', repeat:'Repeats daily, twice a day', pills:15, refill:'20th July, 2021'},
-    {compartment:2, name:'Remdisivir', repeat:'Repeats daily, twice a day', pills:10, refill:'15th July, 2021'},
-    {compartment:3, name:'Remdisivir', repeat:'Repeats daily, twice a day', pills:12, refill:'9th July, 2021'},
-    {compartment:4, name:null, repeat:null, pills:null, refill:null},
-    {compartment:5, name:'Remdisivir', repeat:'Repeats daily, twice a day', pills:18, refill:'12th July, 2021'},
-    {compartment:6, name:null, repeat:null, pills:null, refill:null},
-]
+import firebase from 'firebase';
 
 const Home=() =>{
     const [error, setError] = useState('');
     const { currentUser, logout } = useAuth()
     const history = useHistory()
+    const [data,setData] = useState({});
 
+    const dataRef = firebase.database().ref(currentUser.uid+'/medicine');
+    useEffect(()=>{
+        console.log('hello')
+        dataRef.on('value',snapshot=>{
+            setData(snapshot.val())
+        })
+    },[])
+  
     async function handleLogout() {
         setError('')
 
@@ -50,12 +51,12 @@ const Home=() =>{
                     <div onClick={handleLogout} className='logout-but'>Log Out</div>
                 </div>
             </div>
-            {data.map((item)=>{
+            {Object.values(data).map((item)=>{
                 return(
                     <div className='home-card'>
                         <div className='comp-name'>Compartment {item.compartment}</div>
                         <div className='content'>
-                            <div className='details'>
+                            <div className='med-details'>
                                 <div>Medicine: <b>{item.name}</b></div>
                                 <div><i>{item.repeat}</i></div>
                                 <div>Pills left: <b>{item.pills}</b></div>

@@ -27,7 +27,7 @@ function Signup() {
       setLoading(true)
       await signup(emailRef.current.value, passwordRef.current.value)
       setSubmitted(true);
-      history.push("/")
+      history.push("/details")
     } catch {
       setSubmitted(false)
       setError('Could not create an account!!')

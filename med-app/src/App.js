@@ -10,6 +10,7 @@ import DaySec from './NewMedicine/Page4/DaySection';
 import Time from './NewMedicine/Page5/Time';
 import Login from "./MainPage/login"
 import Signup from "./MainPage/signup"
+import Details from './MainPage/details';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { AuthProvider } from './Authentication/authContext';
 import PrivateRoute from './PrivateRoute';
@@ -25,6 +26,7 @@ const App= () =>{
           <PrivateRoute exact path='/freq' component={Freq} />
           <PrivateRoute exact path='/daysec' component={DaySec} />
           <PrivateRoute exact path='/time' component={Time} />
+          <PrivateRoute exact path='/details' component={Details} />
           <Route exact path='/Signup' component={Signup} /> 
           <Route exact path='/Login' component={Login} /> 
         </Switch>
