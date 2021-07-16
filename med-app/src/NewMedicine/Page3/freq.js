@@ -36,7 +36,7 @@ const Freq=() =>{
             Add New Medicine
             </div>
             
-            <div className="card">
+            <div className="add-med-card">
                 <div className="input-t">
                 How often do you take the medicine?
                 </div>

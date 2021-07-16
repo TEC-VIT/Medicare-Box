@@ -36,7 +36,7 @@ const DaySec=() =>{
             Add New Medicine
             </div>
             
-            <div className="card">
+            <div className="add-med-card">
                 <div className="input-t">
                 At what time of the day do you take your first dose?
                 </div>

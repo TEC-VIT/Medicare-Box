@@ -36,7 +36,7 @@ const Daily=() =>{
             Add New Medicine
             </div>
             
-            <div className="card">
+            <div className="add-med-card">
                 <div className="input-t">
                 Do you take the medicine everyday?
                 </div>

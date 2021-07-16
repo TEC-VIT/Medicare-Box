@@ -6,20 +6,11 @@
 // import firebase from 'firebase';
 // import { GoChevronRight } from "react-icons/go";
 // import { IoIosArrowForward } from "react-icons/io";
+// // import TextField from '@material-ui/core/TextField';
 
 // const Time=() =>{
 
-//     const { useState } = React;
-// const { render } = ReactDOM;
-// const { clamp } = _;
-
-// const {    hour,
-//     minute,
-//     period,
-//     setHour,
-//     setMinute,
-//     setPeriod,
-//   }
+ 
 
 //     return(
 //         <div className="time">
@@ -33,46 +24,27 @@
 //             Add New Medicine
 //             </div>
             
-//             <div className="card">
+//             <div className="add-med-card">
 //                 <div className="input-t">
 //                 When do you need to take the first dose?
 //                 </div>
-                
-//                 <div className="time-picker">
-//       <label>Time: </label>
-//       <input
-//         type="number"
-//         min="1"
-//         max="12"
-//         value={hour}
+//                 <form className={classes.container} noValidate>
+//       <TextField
+//         id="time"
+//         label="Alarm clock"
+//         type="time"
+//         defaultValue="07:30"
+//         className={classes.textField}
+//         InputLabelProps={{
+//           shrink: true,
+//         }}
+//         inputProps={{
+//           step: 300, // 5 min
+//         }}
 //       />
-//       <span>
-//         <button onClick={() => setHour(clamp(hour + 1, 1, 12))}>+</button>
-//         <button onClick={() => setHour(clamp(hour - 1, 1, 12))}>-</button>
-//       </span>
-//       <input
-//         type="number"
-//         min="0"
-//         max="59"
-//         value={minute}
-//       />
-//       <span>
-//         <button onClick={() => setMinute((minute + 15) % 60)}>+</button>
-//       </span>
-//       <select
-//         value={period}
-//         onChange={(event) => setPeriod(event.target.period)}
-//       >
-        
-//       </select>
-//     </div>
+//     </form>
                 
-               
-                
-
 //             </div>
-            
-            
 //             <Link to='/daysec'>
 //                 <div className="next-page" onClick=''>
 //                     < GoChevronRight className="next-page-icon" />

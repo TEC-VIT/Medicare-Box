@@ -56,7 +56,7 @@ const Name=() =>{
             Add New Medicine
             </div>
             
-            <div className="med-name">
+            <div className="add-med-card">
                 <div className="input-t">
                 Name of the Medicine
                 </div>
